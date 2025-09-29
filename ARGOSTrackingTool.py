@@ -22,12 +22,14 @@ line_list = file_object.readlines()
 #Close the file
 file_object.close()
 
+date_dict = {}
+location_dict = {}
 #Parse data from sara.txt
 #Iterate through all data lines in Sara.txt
 for lineString in line_list:
     #Create a list variable that splits lineString based on spaces and points to a list of entries from the line of data
     lineData = lineString.split()
-    if lineData[0] in ['#', 'u']:
+    if lineData[0] in ['#', 'uid']:
         continue
     # Assign variables to specfic items in the list
     record_id = lineData[0]  # ARGOS tracking record ID
@@ -38,3 +40,5 @@ for lineString in line_list:
 
     #Print the location of sara
     #print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
+    date_dict[record_id] = obs_date
+    location_dict[record_id] = (obs_lat, obs_lon)
