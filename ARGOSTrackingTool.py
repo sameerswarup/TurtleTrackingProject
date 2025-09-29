@@ -8,10 +8,23 @@
 # Author: Sameer Swarup (sameer.swarup@duke.edu)
 # Date:   Fall 2025
 #--------------------------------------------------------------
+#Create a variable pointing to the data file
+file_name = r"V:\VSCodeTest\TurtleTrackingProject\data\raw\Sara.txt"
+
+#Create a file object from the file
+file_object = open(file_name,'r')
+
+#Full path: "V:\VSCodeTest\TurtleTrackingProject\data\raw\Sara.txt"
+
+#Read contents of file into a list
+line_list = file_object.readlines()
+
+#Close the file
+file_object.close()
 
 #Parse data from sara.txt
 #Create a string variable that points to a copy and pasted line of data from sara.txt
-lineString = "20616	29051	7/3/2003 9:13	3	66	33.898	-77.958	27.369	-46.309	6	0	-126	529	3	401 651134.7	0"
+lineString = line_list[202]
 
 #Create a list variable that splits lineString based on spaces and points to a list of entries from the line of data
 lineData = lineString.split()
@@ -23,3 +36,6 @@ obs_date = lineData[2] # Observation date
 ob_lc = lineData[4]      # Observation Location Class
 obs_lat = lineData[6]    # Observation Latitude
 obs_lon = lineData[7]    # Observation Longitude
+
+#Print the location of sara
+print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
